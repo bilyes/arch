@@ -27,7 +27,7 @@ sgdisk -Z ${DISK} # zap all on disk
 sgdisk -a 2048 -o ${DISK} # new gpt disk 2048 alignment
 
 # create partitions
-sgdisk -n 1:0:+1000M ${DISK} # partition 1 (UEFI SYS), default start block, 512MB
+sgdisk -n 1:0:+500M ${DISK} # partition 1 (UEFI SYS), default start block, 512MB
 sgdisk -n 2:0:0     ${DISK} # partition 2 (Root), default start, remaining
 
 # set partition types
@@ -54,7 +54,7 @@ mount -t vfat "${DISK}1" /mnt/boot/
 echo "--------------------------------------"
 echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
-pacstrap /mnt base base-devel linux linux-firmware vim sudo --noconfirm --needed
+pacstrap /mnt base base-devel linux linux-firmware sudo --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
 
 mv chroot.sh /mnt
