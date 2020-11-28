@@ -18,14 +18,9 @@ reboot
 ### Arch Linux First Boot
 
 ```bash
-pacman -S --no-confirm pacman-contrib curl git
-git clone https://github.com/ChrisTitusTech/ArchMatic
-cd ArchMatic
-./0-setup.sh
-./1-base.sh
-./2-software-pacman.sh
-./3-software-aur.sh
-./9-post-setup.sh
+pacman -S --no-confirm git
+git clone https://github.com/ilyessbachiri/arch
+arch/install.sh
 ```
 
 ### Don't just run these scripts. Examine them. Customize them. Create your own versions.
@@ -33,7 +28,7 @@ cd ArchMatic
 ---
 
 ### System Description
-This runs Awesome Window Manager with the base configuration from the Material-Awesome project <https://github.com/ChrisTitusTech/material-awesome>.
+This runs Awesome Window Manager with the base configuration.
 
 To boot I use `systemd` because it's minimalist, comes built-in, and since the Linux kernel has an EFI image, all we need is a way to execute it.
 
