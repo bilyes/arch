@@ -16,7 +16,6 @@ PKGS=(
 
     # --- Setup Desktop
         'awesome'               # Awesome Desktop
-        #'xfce4-power-manager'   # Power Manager 
         'rofi'                  # Menu System
         'picom'                 # Translucent Windows
         'xclip'                 # System Clipboard
@@ -31,8 +30,6 @@ PKGS=(
         'wpa_supplicant'            # Key negotiation for WPA wireless networks
         'dialog'                    # Enables shell scripts to trigger dialog boxex
         'openvpn'                   # Open VPN support
-        #'networkmanager-openvpn'    # Open VPN plugin for NM
-        #'network-manager-applet'    # System tray icon/utility for network connectivity
         'libsecret'                 # Library for storing passwords
     
     # --- Audio
@@ -41,7 +38,6 @@ PKGS=(
         'pulseaudio'        # Pulse Audio sound components
         'pulseaudio-alsa'   # ALSA configuration for pulse audio
         'pavucontrol'       # Pulse Audio volume control
-        #'pnmixer'           # System tray volume control
 
     # --- Bluetooth
         #'bluez'                 # Daemons for the bluetooth protocol stack
@@ -57,6 +53,19 @@ PKGS=(
         #'gsfonts'               # Adobe Postscript replacement fonts
         #'hplip'                 # HP Drivers
         #'system-config-printer' # Printer setup  utility
+
+    # SYSTEM --------------------------------------------------------------
+
+        'linux-lts'             # Long term support kernel
+        'htop'                  # Process viewer
+        'ntp'                   # Network Time Protocol to set time via network.
+        'openssh'               # SSH connectivity tools
+        'ntfs-3g'               # Open source implementation of NTFS file system
+
+    # DEVELOPMENT ---------------------------------------------------------
+
+        'clang'                 # C Lang compiler
+        'cmake'                 # Cross-platform open-source make system
 )
 
 for PKG in "${PKGS[@]}"; do

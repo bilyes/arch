@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "-------------------------------------------------"
-echo "Setting up mirrors for optimal download - US Only"
+echo "Setting up mirrors for optimal download - CA Only"
 echo "-------------------------------------------------"
 timedatectl set-ntp true
 pacman -S --noconfirm pacman-contrib
@@ -56,10 +56,6 @@ echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
 pacstrap /mnt base base-devel linux linux-firmware vim sudo --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
-
-echo "--------------------------------------"
-echo "-- Entering Chroot       --"
-echo "--------------------------------------"
 
 mv chroot.sh /mnt
 arch-chroot /mnt /bin/bash -c "./chroot.sh ${DISK}2"

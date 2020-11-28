@@ -4,9 +4,7 @@ if [ -z $1 ]; then
     echo "Error: Please provide a disk. Example: ./chroot.sh /dev/sda1"
 fi
 
-echo "--------------------------------------"
-echo "-- Bootloader Systemd Installation  --"
-echo "--------------------------------------"
+# Bootloader systemd installation
 bootctl install
 cat <<EOF > /boot/loader/entries/arch.conf
 title Arch Linux  
@@ -15,9 +13,7 @@ initrd  /initramfs-linux.img
 options root=${1} rw
 EOF
 
-echo "--------------------------------------"
-echo "--          Network Setup           --"
-echo "--------------------------------------"
+# Network setup
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
 

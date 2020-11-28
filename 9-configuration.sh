@@ -2,8 +2,6 @@
 
 echo -e "\nFINAL SETUP AND CONFIGURATION"
 
-# TODO: Set greeter session to lightdm-webkit2-greeter in /etc/lighdtm/lightdm.conf
-
 # ------------------------------------------------------------------------
 
 echo -e "\nGenerating .xinitrc file"
