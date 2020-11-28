@@ -109,18 +109,12 @@ sudo systemctl enable --now lightdm.service
 #sudo systemctl stop dhcpcd.service
 #sudo systemctl enable --now NetworkManager.service
 
-
-echo "
-###############################################################################
-# Cleaning
-###############################################################################
-"
-
 # Clean orphans pkg
-if [[ ! -n $(pacman -Qdt) ]]; then
+orphans=$(pacman -Qdt)
+if [[ ! -n $orphans ]]; then
 	echo "No orphans to remove."
 else
-	sudo pacman -Rns $(pacman -Qdtq)
+	sudo pacman -Rns $orphans
 fi
 
 # Remove no password sudo rights

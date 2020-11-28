@@ -68,9 +68,6 @@ PKGS=(
         'cmake'                 # Cross-platform open-source make system
 )
 
-for PKG in "${PKGS[@]}"; do
-    echo "INSTALLING: ${PKG}"
-    sudo pacman -S "$PKG" --noconfirm --needed
-done
+sudo pacman -S "${PKGS[@]}" --noconfirm --needed
 
 echo -e "\nDone!\n"

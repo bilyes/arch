@@ -49,7 +49,6 @@ sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /et
 echo '-------------------------------'
 echo "      LOGIN AS $username       "
 echo '-------------------------------'
-./1-base.sh
-./3-software-aur.sh
+./1-base.sh & ./3-software-aur.sh
 ./9-configuration.sh
 
