@@ -88,7 +88,7 @@ sudo sed -i 's|load-module module-esound-protocol-unix|#load-module module-esoun
 # ------------------------------------------------------------------------
 
 echo -e "\nEnabling Login Display Manager"
-sudo sed -i 's/#greeter-session=session-greeter/greeter-session=lightdm-webkit2-greeter/g'
+sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
 sudo systemctl enable --now lightdm.service
 
 # ------------------------------------------------------------------------
