@@ -2,6 +2,11 @@
 
 read -p "Please enter hostname:" hostname
 read -p "Please enter username:" username
+# Add user
+useradd -m -G wheel -s /bin/zsh $username
+echo "Set the password for the user $username"
+passwd $username
+
 read -p "Please enter the size of the swap file in GB: (default 4)" swap_size
 if [ -z $swap_size ]; then
     swap_size = 4
@@ -39,9 +44,6 @@ localectl --no-ask-password set-keymap us
 # Hostname
 hostnamectl --no-ask-password set-hostname $hostname
 
-# Add user
-useradd -m -G wheel -s /bin/zsh $username
-passwd $username
 
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
@@ -49,6 +51,7 @@ sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /et
 echo '-------------------------------'
 echo "      LOGIN AS $username       "
 echo '-------------------------------'
+su $username
 ./1-base.sh & ./3-software-aur.sh
 ./9-configuration.sh
 
