@@ -108,22 +108,25 @@ sudo systemctl enable --now lightdm.service
 #sudo systemctl disable dhcpcd.service
 #sudo systemctl stop dhcpcd.service
 #sudo systemctl enable --now NetworkManager.service
+
+
 echo "
 ###############################################################################
 # Cleaning
 ###############################################################################
 "
-# Remove no password sudo rights
-sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-# Add sudo rights
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # Clean orphans pkg
 if [[ ! -n $(pacman -Qdt) ]]; then
 	echo "No orphans to remove."
 else
-	pacman -Rns $(pacman -Qdtq)
+	sudo pacman -Rns $(pacman -Qdtq)
 fi
+
+# Remove no password sudo rights
+sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+# Add sudo rights
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 # Replace in the same state
 cd $pwd
