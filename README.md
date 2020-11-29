@@ -45,7 +45,7 @@ I also install the LTS Kernel along side the rolling one, and configure my bootl
 ### Resolution
 If running in as a virtual machine set the resolution in `/etc/lightdm/lightdm.conf` file by setting the display setup script as follows:
 ```
-display-setup-script=xrandr --out Virtual-1 --mode 1920x1080
+display-setup-script=xrandr --output Virtual-1 --mode 1920x1080
 ```
 ### Troubleshooting Arch Linux
 

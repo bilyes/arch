@@ -7,7 +7,7 @@ useradd -m -G wheel $username
 echo "Set the password for the user $username"
 passwd $username
 
-read -p "Please enter the size of the swap file in GB: (default 4)" swap_size
+read -p "Please enter the size of the swap file in GB (default 4): " swap_size
 if [ -z $swap_size ]; then
     swap_size=4
 fi
