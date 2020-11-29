@@ -67,7 +67,12 @@ PKGS=(
         'clang'                 # C Lang compiler
         'cmake'                 # Cross-platform open-source make system
         'vim'                   # The best editor
+        'python-pip'            # Python package manager
+
+    # TERMINAL ---------------------------------------------------------
         'zsh'
+        'alacritty'
+        'tmux'
 )
 
 for PKG in "${PKGS[@]}"; do
