@@ -53,5 +53,5 @@ mv 3-software-aur.sh /home/$username/
 ./1-base.sh
 runuser -l $username -c './3-software-aur.sh /home/$username'
 
-./9-configuration.sh
+./8-configuration.sh
 
