@@ -20,7 +20,8 @@ reboot
 ```bash
 pacman -S --no-confirm git
 git clone https://github.com/ilyessbachiri/arch
-arch/install.sh
+cd arch
+./install.sh
 ```
 
 ### Don't just run these scripts. Examine them. Customize them. Create your own versions.
