@@ -48,6 +48,8 @@ hostnamectl --no-ask-password set-hostname $hostname
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
+# Move scripts to the user's home folder
+mv 1-base.sh /home/$username/ & mv 3-software-aur.sh /home/$username/ & mv 9-configuration.sh /home/$username/
 runuser -l $username -c './1-base.sh & ./3-software-aur.sh'
-runuser -l $username -c '/9-configuration.sh'
+runuser -l $username -c './9-configuration.sh'
 
