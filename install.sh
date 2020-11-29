@@ -50,7 +50,8 @@ sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /et
 
 # Move AUR instlalation script to the user's home folder
 mv 3-software-aur.sh /home/$username/
-./1-base.sh & runuser -l $username -c './3-software-aur.sh /home/$username'
+./1-base.sh
+runuser -l $username -c './3-software-aur.sh /home/$username'
 
 ./9-configuration.sh
 
