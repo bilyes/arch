@@ -40,7 +40,7 @@ EOF
 echo -e "\nUpdating /bin/startx to use the correct path"
 
 # By default, startx incorrectly looks for the .serverauth file in our HOME folder.
-sudo sed -i 's|xserverauthfile=\$HOME/.serverauth.\$\$|xserverauthfile=\$XAUTHORITY|g' /bin/startx
+sed -i 's|xserverauthfile=\$HOME/.serverauth.\$\$|xserverauthfile=\$XAUTHORITY|g' /bin/startx
 
 # ------------------------------------------------------------------------
 
@@ -83,13 +83,13 @@ echo -e "\nDisabling Pulse .esd_auth module"
 
 # Pulse audio loads the `esound-protocol` module, which best I can tell is rarely needed.
 # That module creates a file called `.esd_auth` in the home directory which I'd prefer to not be there. So...
-sudo sed -i 's|load-module module-esound-protocol-unix|#load-module module-esound-protocol-unix|g' /etc/pulse/default.pa
+sed -i 's|load-module module-esound-protocol-unix|#load-module module-esound-protocol-unix|g' /etc/pulse/default.pa
 
 # ------------------------------------------------------------------------
 
 echo -e "\nEnabling Login Display Manager"
-sudo sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
-sudo systemctl enable --now lightdm.service
+sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
+systemctl enable --now lightdm.service
 
 # ------------------------------------------------------------------------
 
@@ -114,7 +114,7 @@ orphans=$(pacman -Qdt)
 if [[ ! -n $orphans ]]; then
 	echo "No orphans to remove."
 else
-	sudo pacman -Rns $orphans
+	pacman -Rns $orphans
 fi
 
 # Remove no password sudo rights

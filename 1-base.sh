@@ -69,6 +69,6 @@ PKGS=(
         'vim'                   # The best editor
 )
 
-sudo pacman -S "${PKGS[@]}" --noconfirm --needed
+pacman -S "${PKGS[@]}" --noconfirm --needed
 
 echo -e "\nDone!\n"
