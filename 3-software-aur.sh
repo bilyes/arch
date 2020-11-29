@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]; then
+    echo "Error: Please provide the location where yay should be installed"
+    echo "Example: ./3-software-aur.sh /home/test"
+    exit;
+fi
+
 echo -e "\nINSTALLING AUR SOFTWARE\n"
 
-git clone "https://aur.archlinux.org/yay.git" $HOME/
+exit;
+
+git clone "https://aur.archlinux.org/yay.git" $1/
 
 PKGS=(
 # list packages here
 )
 
-cd ${HOME}/yay
+cd ${1}/yay
 makepkg -si
 
 if [ ${#PKGS[@]} -gt 0 ]; then
