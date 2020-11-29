@@ -74,6 +74,9 @@ PKGS=(
         'alacritty'
         'tmux'
         'picom'
+
+    # WEB ----------------------------------------------------------
+        'firefox'
 )
 
 for PKG in "${PKGS[@]}"; do

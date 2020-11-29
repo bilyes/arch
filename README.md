@@ -35,6 +35,11 @@ To boot I use `systemd` because it's minimalist, comes built-in, and since the L
 
 I also install the LTS Kernel along side the rolling one, and configure my bootloader to offer both as a choice during startup. This enables me to switch kernels in the event of a problem with the rolling one.
 
+### Resolution
+If running in as a virtual machine set the resolution in `/etc/lightdm/lightdm.conf` file by setting the display setup script as follows:
+```
+display-setup-script=xrandr --out Virtual-1 --mode 1920x1080
+```
 ### Troubleshooting Arch Linux
 
 __[Arch Linux Installation Gude](https://github.com/rickellis/Arch-Linux-Install-Guide)__
