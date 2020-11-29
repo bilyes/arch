@@ -13,7 +13,7 @@ exit;
 git clone "https://aur.archlinux.org/yay.git" $1/
 
 PKGS=(
-# list packages here
+    'nerd-fonts-complete'
 )
 
 cd ${1}/yay

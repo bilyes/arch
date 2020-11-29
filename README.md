@@ -18,10 +18,17 @@ reboot
 ### Arch Linux First Boot
 
 ```bash
-pacman -S --no-confirm git
+pacman -S git --no-confirm
 git clone https://github.com/ilyessbachiri/arch
 cd arch
 ./install.sh
+```
+
+### Arch Linux After Login to Awesome
+
+```bash
+git clone https://github.com/ilyessbachiri/arch
+arch/9-customization.sh
 ```
 
 ### Don't just run these scripts. Examine them. Customize them. Create your own versions.
