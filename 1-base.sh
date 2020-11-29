@@ -73,6 +73,7 @@ PKGS=(
         'zsh'
         'alacritty'
         'tmux'
+        'picom'
 )
 
 for PKG in "${PKGS[@]}"; do
