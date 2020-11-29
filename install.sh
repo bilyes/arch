@@ -48,10 +48,6 @@ hostnamectl --no-ask-password set-hostname $hostname
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
-echo '-------------------------------'
-echo "      LOGIN AS $username       "
-echo '-------------------------------'
-su $username
-./1-base.sh & ./3-software-aur.sh
-./9-configuration.sh
+runuser -l $username -c './1-base.sh & ./3-software-aur.sh'
+runuser -l $username -c '/9-configuration.sh'
 
