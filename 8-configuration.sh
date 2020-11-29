@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+if [ -z "$1" ]; then
+    echo "Error: Please provide user to configure"
+    echo "Example: ./9-configuration.sh test"
+    exit;
+fi
+
+
 echo -e "\nFINAL SETUP AND CONFIGURATION"
 
 # ------------------------------------------------------------------------
@@ -8,7 +15,7 @@ echo -e "\nGenerating .xinitrc file"
 
 # Generate the .xinitrc file so we can launch Awesome from the
 # terminal using the "startx" command
-cat <<EOF > ${HOME}/.xinitrc
+cat <<EOF > /home/$1/.xinitrc
 #!/bin/bash
 # Disable bell
 xset -b
@@ -21,7 +28,7 @@ xset s off
 xsetroot -solid darkgrey
 
 # Merge resources (optional)
-#xrdb -merge $HOME/.Xresources
+#xrdb -merge /home/$1/.Xresources
 
 # Caps to Ctrl, no caps
 setxkbmap -layout us -option ctrl:nocaps
@@ -86,6 +93,8 @@ echo -e "\nDisabling Pulse .esd_auth module"
 sed -i 's|load-module module-esound-protocol-unix|#load-module module-esound-protocol-unix|g' /etc/pulse/default.pa
 
 # ------------------------------------------------------------------------
+# Set default shell
+usermod -s /bin/zsh $1
 
 echo -e "\nEnabling Login Display Manager"
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
