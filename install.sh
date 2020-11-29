@@ -3,7 +3,7 @@
 read -p "Please enter hostname:" hostname
 read -p "Please enter username:" username
 # Add user
-useradd -m -G wheel -s /bin/zsh $username
+useradd -m -G wheel $username
 echo "Set the password for the user $username"
 passwd $username
 
@@ -20,7 +20,7 @@ mkswap /swapfile
 swapon /swapfile
 echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 
-pacman -S --noconfirm pacman-contrib curl zsh
+pacman -S --noconfirm pacman-contrib curl
 
 mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 curl -s "https://www.archlinux.org/mirrorlist/?country=CA&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 - > /etc/pacman.d/mirrorlist

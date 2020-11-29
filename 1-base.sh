@@ -67,6 +67,7 @@ PKGS=(
         'clang'                 # C Lang compiler
         'cmake'                 # Cross-platform open-source make system
         'vim'                   # The best editor
+        'zsh'
 )
 
 pacman -S "${PKGS[@]}" --noconfirm --needed
