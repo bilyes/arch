@@ -3,20 +3,18 @@
 if [ -z "$1" ]; then
     echo "Error: Please provide the location where yay should be installed"
     echo "Example: ./3-software-aur.sh /home/test"
-    exit;
+    exit 1;
 fi
 
 echo -e "\nINSTALLING AUR SOFTWARE\n"
 
-exit;
-
-git clone "https://aur.archlinux.org/yay.git" $1/
+git clone "https://aur.archlinux.org/yay.git" $1/yay
 
 PKGS=(
-    'nerd-fonts-complete'
+    'nerd-fonts-fira-code'
 )
 
-cd ${1}/yay
+cd $1/yay
 makepkg -si
 
 for PKG in "${PKGS[@]}"; do
