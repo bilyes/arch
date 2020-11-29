@@ -5,7 +5,7 @@ git clone https://github.com/ilyessbachiri/material-awesome ~/.config/awesome
 
 # Dot files
 git clone https://github.com/ilyessbachiri/dotfiles.git ~/.config/dotfiles \
-    && ~/.configs/dotfiles/install.sh
+    && ~/.config/dotfiles/install.sh
 
 # Terminal
 pip install powerline-status
