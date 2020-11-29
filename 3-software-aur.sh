@@ -19,8 +19,8 @@ PKGS=(
 cd ${1}/yay
 makepkg -si
 
-if [ ${#PKGS[@]} -gt 0 ]; then
-    yay -S "${PKGS[@]}" --noconfirm
-fi
+for PKG in "${PKGS[@]}"; do
+    yay -S --noconfirm $PKG
+done
 
 echo -e "\nDone!\n"

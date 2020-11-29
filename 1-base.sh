@@ -70,6 +70,9 @@ PKGS=(
         'zsh'
 )
 
-pacman -S "${PKGS[@]}" --noconfirm --needed
+for PKG in "${PKGS[@]}"; do
+    echo "INSTALLING: ${PKG}"
+    pacman -S "$PKG" --noconfirm --needed
+done
 
 echo -e "\nDone!\n"
