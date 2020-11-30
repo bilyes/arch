@@ -4,7 +4,7 @@ First, setup the boot USB, boot arch live iso, and run the `preinstall.sh` from 
 
 ### Arch Live ISO (Pre-Install)
 
-This step installs arch to your hard drive. *IT WILL FORMAT THE DISK*
+This step installs arch to your hard drive. *IT WILL FORMAT THE ENTIRE DISK*
 
 ```bash
 pacman -Syy; pacman -S wget --noconfirm
@@ -17,6 +17,8 @@ reboot
 
 ### Arch Linux First Boot
 
+Once the machine reboots, login with `root` and run the following commands:
+
 ```bash
 pacman -S git --no-confirm
 git clone https://github.com/ilyessbachiri/arch
@@ -26,17 +28,22 @@ cd arch
 
 ### Arch Linux After Login to Awesome
 
+The previous command (`./install.sh`) will bring up the display manager. Login with user you entered
+in the previous step and choose Awesome as the windown manager.
+
 ```bash
 git clone https://github.com/ilyessbachiri/arch
 arch/9-customization.sh
 ```
+*Note*: This script opens a `zsh` shell and gets "stuck" there. You need to exit (by running the command `exit`)
+for it to continue.
 
 ### Don't just run these scripts. Examine them. Customize them. Create your own versions.
 
 ---
 
 ### System Description
-This runs Awesome Window Manager with the base configuration.
+This runs Awesome Window Manager with a custom Material theme.
 
 To boot I use `systemd` because it's minimalist, comes built-in, and since the Linux kernel has an EFI image, all we need is a way to execute it.
 
