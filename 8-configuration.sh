@@ -96,10 +96,6 @@ sed -i 's|load-module module-esound-protocol-unix|#load-module module-esound-pro
 # Set default shell
 usermod -s /bin/zsh $1
 
-echo -e "\nEnabling Login Display Manager"
-sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
-systemctl enable --now lightdm.service
-
 # ------------------------------------------------------------------------
 
 #echo -e "\nEnabling bluetooth daemon and setting it to auto-start"
@@ -130,6 +126,11 @@ fi
 sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 # Add sudo rights
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
+# Enable and start the display manager
+echo -e "\nEnabling Login Display Manager"
+sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
+systemctl enable --now lightdm.service
 
 echo "
 ###############################################################################
