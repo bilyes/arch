@@ -70,13 +70,17 @@ PKGS=(
         'python-pip'            # Python package manager
 
     # TERMINAL ---------------------------------------------------------
+
         'zsh'
         'alacritty'
         'tmux'
         'picom'
 
-    # WEB ----------------------------------------------------------
-        'firefox'
+    # APPS ----------------------------------------------------------
+
+        'firefox'               # Web browser
+        'thunderbird'           # Email client
+        'keepassxc'             # Password manager
 )
 
 for PKG in "${PKGS[@]}"; do

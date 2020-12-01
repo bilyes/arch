@@ -12,6 +12,9 @@ git clone "https://aur.archlinux.org/yay.git" $1/yay
 
 PKGS=(
     'nerd-fonts-fira-code'
+    'nerd-fonts-roboto-mono'
+    'nerd-fonts-inconsolata'
+    'nerd-fonts-mononoki'
     'i3lock-fancy'
 )
 
