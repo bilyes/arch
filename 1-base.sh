@@ -61,6 +61,7 @@ PKGS=(
         'ntp'                   # Network Time Protocol to set time via network.
         'openssh'               # SSH connectivity tools
         'ntfs-3g'               # Open source implementation of NTFS file system
+        'acpi'                  # Laptop battery check
 
     # DEVELOPMENT ---------------------------------------------------------
 
@@ -74,7 +75,6 @@ PKGS=(
         'zsh'
         'alacritty'
         'tmux'
-        'picom'
 
     # APPS ----------------------------------------------------------
 
