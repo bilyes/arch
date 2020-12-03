@@ -11,11 +11,14 @@ echo -e "\nINSTALLING AUR SOFTWARE\n"
 git clone "https://aur.archlinux.org/yay.git" $1/yay
 
 PKGS=(
+    # Fonts
     'nerd-fonts-fira-code'
     'nerd-fonts-roboto-mono'
     'nerd-fonts-inconsolata'
     'nerd-fonts-mononoki'
-    'i3lock-fancy'
+
+    'i3lock-fancy'              # Lock screen
+    'sct'                       # Set color temperature
 )
 
 cd $1/yay
