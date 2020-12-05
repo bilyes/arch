@@ -127,6 +127,15 @@ sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /et
 # Add sudo rights
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
+# Copy udev rule: 99-monitor-hotplug.rules
+# Copy monitor-hotplug.sh script under /home/$1/scripts/
+cp etc/udev/rules.d/99-monitor-hotplug.rules /etc/udev/rules.d/99-monitor-hotplug.rules
+scripts_folder=/home/$1/scripts
+mkdir $scripts_folder
+chown $1 $scripts_folder
+cp monitor-hotplug.sh $scripts_folder
+
+
 # Enable and start the display manager
 echo -e "\nEnabling Login Display Manager"
 sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
