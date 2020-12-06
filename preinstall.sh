@@ -4,19 +4,21 @@ echo "-------------------------------------------------"
 echo "-------select your disk to format----------------"
 echo "-------------------------------------------------"
 lsblk
-echo "Please enter disk: (example /dev/sda)"
-read DISK
+read -p "Please enter disk (example /dev/sda): " DISK
 
 if [ -z "$DISK" ]; then
     echo "Error: No disk have been selected."
     exit 1;
 fi
 
-echo "Please enter the size for the root partition \"/\" in GB: (default 20)"
-read ROOTSIZE
-
+read -p "Please enter the size for the root partition \"/\" in GB (default 20): " ROOTSIZE
 if [ -z "$ROOTSIZE" ]; then
     ROOTSIZE=20
+fi
+
+read -p "Please enter the size of the swap file in GB (default 4): " SWAPSIZE 
+if [ -z $SWAPSIZE ]; then
+    SWAPSIZE=4
 fi
 
 echo "-------------------------------------------------"
@@ -41,25 +43,31 @@ sgdisk -a 2048 -o ${DISK} # new gpt disk 2048 alignment
 
 # create partitions
 sgdisk -n 1:0:+500M         ${DISK} # partition 1 (UEFI SYS), default start block, 500MB
-sgdisk -n 2:0:+${ROOTSIZE}G ${DISK} # partition 2 (Root), default start, 20G
-sgdisk -n 3:0:0             ${DISK} # partition 3 (Home), default start, remaining
+sgdisk -n 2:0:+${SWAPSIZE}G ${DISK} # partition 2 (Swap), default start, 4G
+sgdisk -n 3:0:+${ROOTSIZE}G ${DISK} # partition 3 (Root), default start, 20G
+sgdisk -n 4:0:0             ${DISK} # partition 4 (Home), default start, remaining
 
 # set partition types
 sgdisk -t 1:ef00 ${DISK}
-sgdisk -t 2:8300 ${DISK}
+sgdisk -t 2:8200 ${DISK}
 sgdisk -t 3:8300 ${DISK}
+sgdisk -t 4:8300 ${DISK}
 
 # label partitions
 sgdisk -c 1:"UEFISYS" ${DISK}
-sgdisk -c 2:"ROOT" ${DISK}
-sgdisk -c 3:"HOME" ${DISK}
+sgdisk -c 2:"SWAP" ${DISK}
+sgdisk -c 3:"ROOT" ${DISK}
+sgdisk -c 4:"HOME" ${DISK}
 
 # make filesystems
 echo -e "\nCreating Filesystems...\n$HR"
 
 mkfs.vfat -F32 -n "UEFISYS" "${DISK}1"
-mkfs.ext4 -L "ROOT" "${DISK}2"
-mkfs.ext4 -L "HOME" "${DISK}3"
+mkswap -L "SWAP" "${DISK}2"
+mkfs.ext4 -L "ROOT" "${DISK}3"
+mkfs.ext4 -L "HOME" "${DISK}4"
+
+swapon "${DISK}2"
 
 # mount target
 mkdir /mnt
@@ -74,6 +82,7 @@ echo "-- Arch Install on Main Drive       --"
 echo "--------------------------------------"
 pacstrap /mnt base base-devel linux linux-firmware sudo --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
+echo "${DISK}2 swap swap defaults 0 0" >> /mnt/etc/fstab
 
 mv chroot.sh /mnt
 arch-chroot /mnt /bin/bash -c "./chroot.sh ${DISK}2"

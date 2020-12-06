@@ -7,18 +7,18 @@ useradd -m -G wheel $username
 echo "Set the password for the user $username"
 passwd $username
 
-read -p "Please enter the size of the swap file in GB (default 4): " swap_size
-if [ -z $swap_size ]; then
-    swap_size=4
-fi
+#read -p "Please enter the size of the swap file in GB (default 4): " swap_size
+#if [ -z $swap_size ]; then
+    #swap_size=4
+#fi
 
 # Create the swapfile
-echo "Creating swapfile..."
-dd if=/dev/zero of=/swapfile bs=1G count=$swap_size
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile none swap defaults 0 0" >> /etc/fstab
+#echo "Creating swapfile..."
+#dd if=/dev/zero of=/swapfile bs=1G count=$swap_size
+#chmod 600 /swapfile
+#mkswap /swapfile
+#swapon /swapfile
+#echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 
 pacman -S --noconfirm pacman-contrib curl
 
