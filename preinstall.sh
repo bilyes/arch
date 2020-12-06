@@ -71,11 +71,11 @@ swapon "${DISK}2"
 
 # mount target
 mkdir /mnt
-mount -t ext4 "${DISK}2" /mnt
+mount -t ext4 "${DISK}3" /mnt
 mkdir -p /mnt/boot/efi
 mount -t vfat "${DISK}1" /mnt/boot
 mkdir /mnt/home
-mount -t ext4 "${DISK}3" /mnt/home
+mount -t ext4 "${DISK}4" /mnt/home
 
 echo "--------------------------------------"
 echo "-- Arch Install on Main Drive       --"
@@ -85,7 +85,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "${DISK}2 swap swap defaults 0 0" >> /mnt/etc/fstab
 
 mv chroot.sh /mnt
-arch-chroot /mnt /bin/bash -c "./chroot.sh ${DISK}2"
+arch-chroot /mnt /bin/bash -c "./chroot.sh ${DISK}3"
 umount -R /mnt
 
 echo "--------------------------------------"
