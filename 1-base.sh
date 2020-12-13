@@ -17,6 +17,7 @@ PKGS=(
     # --- Setup Desktop
         'awesome'               # Awesome Desktop
         'rofi'                  # Menu System
+        'rofi-calc'             # Rofi calculator
         'picom'                 # Translucent Windows
         'xclip'                 # System Clipboard
         'gnome-polkit'          # Elevate Applications
