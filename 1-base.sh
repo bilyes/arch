@@ -41,8 +41,8 @@ PKGS=(
         'pavucontrol'       # Pulse Audio volume control
 
     # --- Bluetooth
-        #'bluez'                 # Daemons for the bluetooth protocol stack
-        #'bluez-utils'           # Bluetooth development and debugging utilities
+        'bluez'                 # Daemons for the bluetooth protocol stack
+        'bluez-utils'           # Bluetooth development and debugging utilities
         #'bluez-firmware'        # Firmwares for Broadcom BCM203x and STLC2300 Bluetooth chips
         #'blueberry'             # Bluetooth configuration tool
         #'pulseaudio-bluetooth'  # Bluetooth support for PulseAudio
