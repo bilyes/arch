@@ -42,3 +42,7 @@ runuser -l $username -c "./3-software-aur.sh /home/$username"
 
 ./8-configuration.sh $username
 
+runuser -l $username -c "./9-customization.sh"
+
+./99-start.sh
+

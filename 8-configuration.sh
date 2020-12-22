@@ -135,14 +135,3 @@ mkdir $scripts_folder
 chown $1 $scripts_folder
 cp monitor-hotplug.sh $scripts_folder
 
-
-# Enable and start the display manager
-echo -e "\nEnabling Login Display Manager"
-sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-webkit2-greeter/g' /etc/lightdm/lightdm.conf
-systemctl enable --now lightdm.service
-
-echo "
-###############################################################################
-# Done
-###############################################################################
-"
