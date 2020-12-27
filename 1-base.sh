@@ -63,6 +63,8 @@ PKGS=(
         'openssh'               # SSH connectivity tools
         'ntfs-3g'               # Open source implementation of NTFS file system
         'acpi'                  # Laptop battery check
+        'inotify-tools'         # Filesystem watching tools
+        'rsync'                 # File syncing utility
 
     # DEVELOPMENT ---------------------------------------------------------
 

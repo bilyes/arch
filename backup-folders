@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# A backup utility that encrypts the data using GPG
+# before copying it to a location on the filesystem
+#
+# Author: Ilyess Bachiri
+# Copyright (c) 2020-present Ilyess Bachiri
+
+throw_error() {
+    echo "ERROR: $1"
+    exit 1
+}
+
+if [[ -z "$1" || -z "$2" || -z "$3" ]]; then
+    throw_error "Missing argument. Usage: sync-folders FOLDER BACKUP_LOCATION PASSPHRASE_FILE"
+fi
+if [[ ! -f "$3" ]]; then
+    throw_error "No file $3"
+fi
+
+IFS=',' read -ra folders <<< $1
+
+for i in ${folders[@]} $2; do
+    if [[ ! -d "$i" ]]; then
+        throw_error "No directory $i"
+    fi
+done
+
+passphrase_path=$(realpath $3)
+backup_location=$(realpath $2)
+
+backup_encrypt() {
+    target=$(basename $1)
+    tmp_folder=/tmp/sync-folder-tmp$RANDOM
+    archive=$tmp_folder/$target.gpg
+
+    mkdir $tmp_folder
+
+    base_location=$(pwd)
+    cd $1/..
+
+    gpgtar -c -o $archive --gpg-args "--pinentry-mode loopback --passphrase-file $passphrase_path" $target
+
+    cd $base_location
+
+    rsync -avz $archive $backup_location
+
+    rm -rf $tmp_folder
+}
+
+process_event() {
+    echo "Processing event $event"
+
+    folder=$(echo "$1" | cut --delimiter=' ' --fields=1)
+
+    backup_encrypt $folder
+}
+
+while true; do
+    event=$(echo ${folders[@]} | xargs inotifywait -r -e modify,create,delete,move)
+    process_event $event &
+done
