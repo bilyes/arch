@@ -25,6 +25,21 @@ done
 
 IFS=',' read -ra remotes <<< $2
 
+configured_remotes=($(rclone listremotes))
+
+for r in ${remotes[@]}; do
+    found=0
+    for i in ${configured_remotes[@]}; do
+        if [[ "$i" == "$r:" ]]; then
+            found=1
+        fi
+    done
+
+    if [[ "$found" -eq 0 ]]; then
+        throw_error "Unknown remote $r. To configure it run: rclone config"
+    fi
+done
+
 backup() {
     target=$(basename $1)
 
