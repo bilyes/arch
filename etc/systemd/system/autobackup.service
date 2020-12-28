@@ -7,7 +7,7 @@ Type=simple
 # Another Type: forking
 User=<USERNAME>
 WorkingDirectory=/home/<USERNAME>
-ExecStart=/home/<USERNAME>/scripts/backup-folders <FOLDERS,COMMA,SEPARATED> <BACKUP_LOCALTION> <PASSPHRASE_FILE>
+ExecStart=/home/<USERNAME>/scripts/autobackup <FOLDERS,COMMA,SEPARATED> <REMOTES,COMMA,SEPARATED>
 Restart=on-failure
 # Other restart options: always, on-abort, etc
 

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#
+# DEPRECATED - Use autobackup instead
+#
 # A backup utility that encrypts the data using GPG
 # before copying it to a location on the filesystem
 #
