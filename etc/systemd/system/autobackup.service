@@ -7,7 +7,7 @@ Type=simple
 # Another Type: forking
 User=<USERNAME>
 WorkingDirectory=/home/<USERNAME>
-ExecStart=/home/<USERNAME>/scripts/autobackup <FOLDERS,COMMA,SEPARATED> <REMOTES,COMMA,SEPARATED>
+ExecStart=otoclone -v
 Restart=on-failure
 # Other restart options: always, on-abort, etc
 

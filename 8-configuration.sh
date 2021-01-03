@@ -139,4 +139,3 @@ scripts_folder=/home/$1/scripts
 mkdir $scripts_folder
 chown $1 $scripts_folder
 cp monitor-hotplug.sh $scripts_folder
-cp backup-folders $scripts_folder

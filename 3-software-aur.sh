@@ -19,6 +19,7 @@ PKGS=(
 
     'i3lock-fancy'              # Lock screen
     'sct'                       # Set color temperature
+    'otoclone'                  # Automatic backup utility
 )
 
 cd $1/yay
