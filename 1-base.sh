@@ -13,6 +13,9 @@ PKGS=(
         'xorg-xinit'            # XOrg init
         'xorg-xinput'           # Xorg xinput
         'mesa'                  # Open source version of OpenGL
+        'nvidia'
+        'nvidia-utils'
+        'nvidia-settings'
 
     # --- Setup Desktop
         'awesome'               # Awesome Desktop
@@ -79,12 +82,14 @@ PKGS=(
         'alacritty'
         'tmux'
         'fzf'
+        'ranger'
 
     # APPS ----------------------------------------------------------
 
         'firefox'               # Web browser
         'thunderbird'           # Email client
         'keepassxc'             # Password manager
+        'calibre'               # Ebook management
 )
 
 for PKG in "${PKGS[@]}"; do
