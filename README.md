@@ -8,8 +8,8 @@ This step installs arch to your hard drive. *IT WILL FORMAT THE ENTIRE DISK*
 
 ```bash
 pacman -Syy; pacman -S wget --noconfirm
-wget https://raw.githubusercontent.com/ilyessbachiri/arch/master/preinstall.sh
-wget https://raw.githubusercontent.com/ilyessbachiri/arch/master/chroot.sh
+wget https://raw.githubusercontent.com/bilyes/arch/master/preinstall.sh
+wget https://raw.githubusercontent.com/bilyes/arch/master/chroot.sh
 chmod u+x preinstall.sh chroot.sh
 ./preinstall.sh
 reboot
@@ -21,7 +21,7 @@ Once the machine reboots, login with `root` and run the following commands:
 
 ```bash
 pacman -S git --no-confirm
-git clone https://github.com/ilyessbachiri/arch
+git clone https://github.com/bilyes/arch
 cd arch
 ./install.sh
 ```
@@ -32,7 +32,7 @@ The previous command (`./install.sh`) will bring up the display manager. Login w
 in the previous step and choose Awesome as the windown manager.
 
 ```bash
-git clone https://github.com/ilyessbachiri/arch
+git clone https://github.com/bilyes/arch
 arch/9-customization.sh
 ```
 *Note*: This script opens a `zsh` shell and gets "stuck" there. You need to exit (by running the command `exit`)
